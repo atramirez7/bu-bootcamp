@@ -1,4 +1,6 @@
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -69,4 +71,18 @@ public class GradeAnalyzerTest {
     // Assert
     assertEquals(56.0, result);
     }
+
+    @Test
+    void calculateAverage_returnsSingleValue_whenListHasTenItem() {
+
+    // Arrange
+    ArrayList<Integer> scores = new ArrayList<>(Arrays.asList(45, 12, 20, 95, 100, 56, 78, 90, 34, 23));
+
+    // Act
+    double result = GradeAnalyzer.calculateAverage(scores);
+
+    // Assert
+    assertEquals(55.3, result);
+    }
+
 }
