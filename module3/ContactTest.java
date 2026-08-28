@@ -3,6 +3,9 @@ package module3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 
 
 public class ContactTest {
@@ -37,6 +40,21 @@ public class ContactTest {
     @Test
     void toString_containsPhone() {
         assertTrue(contact.toString().contains("555 0123"));
+    }
+
+    @Test
+    void contactList_hasNoDuplicatePeople() {
+        ArrayList<Contact> contacts = new ArrayList<>(Arrays.asList(
+                new Contact("Amy Han", "+1 603 555 0123"),
+                new Contact("Amy Smith", "+1 603 555 0456")
+        ));
+
+        HashSet<String> uniqueNames = new HashSet<>();
+        for (Contact contact : contacts) {
+            uniqueNames.add(contact.getName());
+        }
+
+        assertEquals(contacts.size(), uniqueNames.size());
     }
 
 }
